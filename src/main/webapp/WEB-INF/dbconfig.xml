@@ -43,6 +43,7 @@
     和至少一个数据映射器类。在 MyBatis-Spring 中,SqlSessionFactoryBean 是用于创建 SqlSessionFactory 的-->
     <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
         <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="resources/mybatis/mybaits-config.xml" />
         <property name="mapperLocations" value="classpath*:respository/*.xml"/>
     </bean>
 

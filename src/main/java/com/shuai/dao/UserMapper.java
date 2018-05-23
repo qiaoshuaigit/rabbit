@@ -1,8 +1,11 @@
 package com.shuai.dao;
 
 import com.shuai.entity.User;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserMapper {
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(User record);

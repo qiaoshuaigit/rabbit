@@ -5,6 +5,8 @@ public class User {
 
     private String name;
 
+    private String passWord;
+
     private Integer age;
 
     private String address;
@@ -23,6 +25,14 @@ public class User {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
+    }
+
+    public String getPassWord() {
+        return passWord;
+    }
+
+    public void setPassWord(String passWord) {
+        this.passWord = passWord == null ? null : passWord.trim();
     }
 
     public Integer getAge() {

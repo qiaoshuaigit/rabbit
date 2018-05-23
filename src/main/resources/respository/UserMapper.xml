@@ -4,11 +4,12 @@
   <resultMap id="BaseResultMap" type="com.shuai.entity.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="pass_word" property="passWord" jdbcType="VARCHAR" />
     <result column="age" property="age" jdbcType="INTEGER" />
     <result column="address" property="address" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, age, address
+    id, name, pass_word, age, address
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -21,10 +22,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.shuai.entity.User" >
-    insert into user (id, name, age, 
-      address)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, 
-      #{address,jdbcType=VARCHAR})
+    insert into user (id, name, pass_word, 
+      age, address)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
+      #{age,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.shuai.entity.User" >
     insert into user
@@ -34,6 +35,9 @@
       </if>
       <if test="name != null" >
         name,
+      </if>
+      <if test="passWord != null" >
+        pass_word,
       </if>
       <if test="age != null" >
         age,
@@ -49,6 +53,9 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
+      <if test="passWord != null" >
+        #{passWord,jdbcType=VARCHAR},
+      </if>
       <if test="age != null" >
         #{age,jdbcType=INTEGER},
       </if>
@@ -63,6 +70,9 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
+      <if test="passWord != null" >
+        pass_word = #{passWord,jdbcType=VARCHAR},
+      </if>
       <if test="age != null" >
         age = #{age,jdbcType=INTEGER},
       </if>
@@ -75,6 +85,7 @@
   <update id="updateByPrimaryKey" parameterType="com.shuai.entity.User" >
     update user
     set name = #{name,jdbcType=VARCHAR},
+      pass_word = #{passWord,jdbcType=VARCHAR},
       age = #{age,jdbcType=INTEGER},
       address = #{address,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

@@ -28,6 +28,37 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-logging</artifactId>
+                    <groupId>commons-logging</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--第二步:slf4j中间转换器 -->
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jul-to-slf4j</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+
+        <!--第三步:引入logback包-->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.1.11</version>
         </dependency>
 
         <dependency>
@@ -140,6 +171,13 @@
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
+
+        <!--日志
+            SL4J是门面接口
+            slf4j-log4j12:链接slf4j-api和log4j中间的适配器
+            log4j这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
+        -->
+
     </dependencies>
     <build>
         <finalName>rabbit-03</finalName>
