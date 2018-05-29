@@ -25,4 +25,11 @@ public class UserServiceImpl implements IUserService{
         return user;
     }
 
+    @Override
+    public Object updateUser(User user) {
+        int i = 1/0;
+        System.out.println("====UserServiceImpl==updateUser========");
+        return "Success";
+    }
+
 }

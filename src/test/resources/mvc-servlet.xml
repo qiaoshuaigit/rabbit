@@ -4,7 +4,7 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 此注解会自动注册DefaulAunotationHandleMapping和AnnotationMethodHandleerAdapter2个bean，
+    <!-- 此注解会自动注册DefaultAnnotationHandlerMapping和AnnotationMethodHandleerAdapter2个bean，
         是springmvc为@controller分发请求所必须的 -->
     <mvc:annotation-driven enable-matrix-variables="true"/>
 
@@ -26,5 +26,13 @@
        所以就支持classpath目录,jar包内静态资源的访问-->
     <mvc:resources mapping="/resources/**" location="resources/" />
 
+    <!--传统方式 配置拦截器 也可注解方式 -->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/index"/>
+            <bean class="com.shuai.interceptor.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>

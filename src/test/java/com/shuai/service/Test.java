@@ -48,4 +48,6 @@ public class Test {
         System.out.println("redis缓冲获取值："+time);
         System.out.println(redisUtils.keys("*"));
     }
+
+
 }

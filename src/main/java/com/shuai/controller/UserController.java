@@ -45,4 +45,11 @@ public class UserController {
 
         return "index";
     }
+
+    @ResponseBody
+    @RequestMapping("/update")
+    public String updateUser(){
+        userService.updateUser(new User());
+        return "SUCCESS";
+    }
 }
