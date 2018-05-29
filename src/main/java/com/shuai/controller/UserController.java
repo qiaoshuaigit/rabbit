@@ -7,12 +7,19 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author shuaion 2017/7/13
  **/
+
+/**
+ * @Transactional不起作用是因为 事物是属于父类容器中得bean 而controller是子容器中得bean
+ * 子容器可以访问父类中得bean和方法 但父类不可以访问子类中得bean
+ */
+
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -31,19 +38,10 @@ public class UserController {
     }
 
     @RequestMapping("/getuser")
-    public String getuser() {
-
-        User user = new User();
-        user.setName("张三");
-        user.setAge(12);
-        user.setAddress("中国长春");
-        user.setPassWord("123456");
-        userService.insertUser(user);
-        System.out.println("-----getuser------");
-        userService.getUserById(1);
-        System.out.println(user.toString());
-
-        return "index";
+    @ResponseBody
+    public Object getuser(Integer id) {
+        User user = userService.getUserById(id);
+        return user;
     }
 
     @ResponseBody
@@ -51,5 +49,14 @@ public class UserController {
     public String updateUser(){
         userService.updateUser(new User());
         return "SUCCESS";
+    }
+
+    @ResponseBody
+    @RequestMapping("/insert")
+    public Object insertUser(User user){
+
+        int id = userService.insertUser(user);
+        int i = 1/0;
+        return id;
     }
 }

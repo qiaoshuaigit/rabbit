@@ -13,6 +13,8 @@
         <spring.version>4.2.6.RELEASE</spring.version>
         <project.artifactId>rabbit</project.artifactId>
 
+        <jackson.version>2.5.4</jackson.version>
+
     </properties>
 
     <dependencies>
@@ -192,12 +194,17 @@
             <version>2.9.0</version>
         </dependency>
 
-        <!--日志
-            SL4J是门面接口
-            slf4j-log4j12:链接slf4j-api和log4j中间的适配器
-            log4j这个是具体的日志系统。通过slf4j-log4j12初始化Log4j，达到最终日志的输出。
-        -->
-
+        <!--jackson-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>rabbit-03</finalName>

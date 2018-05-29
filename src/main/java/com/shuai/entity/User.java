@@ -1,7 +1,7 @@
 package com.shuai.entity;
 
 public class User {
-    private Integer id;
+    private int id;
 
     private String name;
 

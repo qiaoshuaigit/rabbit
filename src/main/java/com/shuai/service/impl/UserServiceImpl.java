@@ -5,17 +5,21 @@ import com.shuai.entity.User;
 import com.shuai.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author shuaion 2017/7/14
  **/
 @Service
+@Transactional
 public class UserServiceImpl implements IUserService{
     @Autowired
     private UserMapper userMapper;
     @Override
-    public void insertUser(User user) {
+    public int insertUser(User user) {
         userMapper.insert(user);
+        //int i = 1/0;
+        return user.getId();
     }
 
     @Override

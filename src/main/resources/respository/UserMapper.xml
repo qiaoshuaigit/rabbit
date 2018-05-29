@@ -21,7 +21,10 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.shuai.entity.User" >
+  <!--通过keyProperty和useGeneratedKeys开启返回主键功能-->
+  <!--keyProperty:用于设置getGeneratedKeys方法或selectKey子元素返回值将赋值到领域模型的哪个属性中-->
+  <!--useGeneratedKeys:设置是否使用JDBC的getGenereatedKeys方法获取主键并赋值到keyProperty设置的领域模型属性中-->
+  <insert id="insert" parameterType="com.shuai.entity.User" keyProperty="id" useGeneratedKeys="true">
     insert into user (id, name, pass_word, 
       age, address)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{passWord,jdbcType=VARCHAR}, 
