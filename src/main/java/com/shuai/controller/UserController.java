@@ -53,6 +53,7 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("/insert")
+    @Transactional
     public Object insertUser(User user){
 
         int id = userService.insertUser(user);

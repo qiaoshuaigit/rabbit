@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author shuaion 2017/7/14
  **/
 @Service
-@Transactional
+//@Transactional
 public class UserServiceImpl implements IUserService{
     @Autowired
     private UserMapper userMapper;
@@ -31,7 +31,6 @@ public class UserServiceImpl implements IUserService{
 
     @Override
     public Object updateUser(User user) {
-        int i = 1/0;
         System.out.println("====UserServiceImpl==updateUser========");
         return "Success";
     }

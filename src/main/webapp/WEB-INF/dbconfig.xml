@@ -58,4 +58,9 @@
     <!-- enable the configuration of transactional behavior based on annotations -->
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
+    <!-- 扫描service层组件 -->
+    <context:component-scan base-package="com.shuai">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
 </beans>
