@@ -11,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author shuaion 2017/7/13
  **/
@@ -57,7 +60,34 @@ public class UserController {
     public Object insertUser(User user){
 
         int id = userService.insertUser(user);
-        int i = 1/0;
+
         return id;
     }
+
+    @ResponseBody
+    @RequestMapping("/setRedisList")
+    public Object setRedisList(String flag,String name){
+        List list = new ArrayList();
+        list.add(name);
+        Long id = redisUtils.lpush(flag,list);
+        return id;
+    }
+    @ResponseBody
+    @RequestMapping("/lpop")
+    public Object getRedisList(String flag){
+        return redisUtils.lpop(flag);
+    }
+
+    @ResponseBody
+    @RequestMapping("/keys")
+    public Object getKeyList(String flag){
+        return redisUtils.getKeys(flag);
+    }
+
+    @ResponseBody
+    @RequestMapping("/values")
+    public Object values(String flag){
+        return redisUtils.lrangeAll(flag);
+    }
+
 }
